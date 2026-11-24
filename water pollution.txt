@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Water Pollution Checker</title>
+<style>
+body{
+font-family: Arial, sans-serif;
+text-align:center;
+background:#e6f7ff;
+padding:40px;
+}
+.box{
+background:white;
+padding:20px;
+width:350px;
+margin:auto;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+}
+input{
+width:80%;
+padding:8px;
+margin:10px;
+}
+button{
+padding:10px 20px;
+background:#0077cc;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+#result{
+margin-top:20px;
+font-size:20px;
+font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h2>Water Pollution Monitoring System</h2>
+
+<label>pH Value:</label><br>
+<input type="number" id="ph" step="0.1"><br>
+
+<label>Turbidity (NTU):</label><br>
+<input type="number" id="turbidity"><br>
+
+<button onclick="checkWater()">Check Water Quality</button>
+
+<div id="result"></div>
+</div>
+
+<script>
+function checkWater() {
+let ph = parseFloat(document.getElementById("ph").value);
+let turbidity = parseFloat(document.getElementById("turbidity").value);
+
+let result = document.getElementById("result");
+
+if ((ph >= 6.5 && ph <= 8.5) && turbidity <= 5) {
+result.innerHTML = "✅ Safe Water";
+result.style.color = "green";
+}
+else if ((ph >= 5.5 && ph <= 9) && turbidity <= 10) {
+result.innerHTML = "⚠ Moderately Polluted";
+result.style.color = "orange";
+}
+else {
+result.innerHTML = "❌ Highly Polluted";
+result.style.color = "red";
+}
+}
+</script>
+
+</body>
+</html>
